@@ -5,21 +5,22 @@ import re
 
 # Styles and scripting for the page
 main_page_head = '''
-<head>
+<!DOCTYPE html>
+<html lang="en">
+<head>  
     <meta charset="utf-8">
     <title>Movie Trailer Website</title>
-
+    
     <!-- Bootstrap 3 -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <style type="text/css" media="screen">
+    <style  media="screen">
         body {
             padding-top: 70px;
-        }
-        
+        }  
         img {
             border-radius :20px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -66,7 +67,7 @@ main_page_head = '''
             background-color: white;
         }
     </style>
-    <script type="text/javascript" charset="utf-8">
+    <script type="text/javascript">
         // Pause the video when the modal is closed
         $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
             // Remove the src so the player itself gets removed, as this is the only
@@ -93,7 +94,7 @@ main_page_head = '''
     </script>
 </head>
 '''
-
+# NOQA
 
 # The main page layout and title bar
 main_page_content = '''
@@ -132,11 +133,10 @@ main_page_content = '''
 # A single movie entry html template
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_img}" width="220" height="342">
+    <img src="{posterimg}" width="220" height="342">
     <h2>{title}</h2>
     <h5>{storyline}</h5>
-    <h4>{rating}</h4>
-   
+    <h4>{rating}</h4>   
 </div>
 '''
 
@@ -157,8 +157,8 @@ def create_movie_tiles_content(movies):
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             title = movie.title,
-            poster_img= movie.poster_img,
-            trailer = trailer,
+            posterimg = movie.posterimg,
+            trailer = movie.trailer,
             storyline = movie.storyline,
             rating = "Rating :"+movie.rating
         )

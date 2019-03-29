@@ -111,7 +111,6 @@ main_page_content = '''
         </div>
       </div>
     </div>
-
     <!-- Main Page Content -->
     <div class="container">
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -128,15 +127,16 @@ main_page_content = '''
   </body>
 </html>
 '''
-
+# NOQA
 
 # A single movie entry html template
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer}" data-toggle="modal" data-target="#trailer">
-    <img src="{posterimg}" width="220" height="342">
+    <img src="{posterimg}" width="220" height="342" >
     <h2>{title}</h2>
     <h5>{storyline}</h5>
-    <h4>{rating}</h4>   
+    <h4>{rating}</h4>
+   
 </div>
 '''
 
@@ -158,7 +158,7 @@ def create_movie_tiles_content(movies):
         content += movie_tile_content.format(
             title = movie.title,
             posterimg = movie.posterimg,
-            trailer = movie.trailer,
+            trailer = trailer,
             storyline = movie.storyline,
             rating = "Rating :"+movie.rating
         )

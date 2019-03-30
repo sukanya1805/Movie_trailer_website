@@ -2,20 +2,20 @@ import movie_website
 import media
 
 '''Assigning the values for instances declared in media python file'''
-Valid_Ratings = {1: 'Very Poor', 2:'OK', 3:'Good'}
+Valid_Ratings = {1: 'Very Poor', 2: 'OK', 3: 'Good'}
 Titanic = media.Movie("Titanic",
                       "It is an epic,action packed romance set"
                       "againts ill-fated maiden voyage the RMS Titanic",
                       "titanic-the-movie.jpg",
                       "https://www.youtube.com/watch?v=2e-eXJ6HgkQ",
-                       Valid_Ratings[3])
+                      Valid_Ratings[3])
 
 Gullyboy = media.Movie("Gully boy",
                        "A boy from a ghetto in mumbai"
                        "realizes his calling to become a Rapper",
                        "gully_boy.jpg",
                        "https://www.youtube.com/watch?v=JfbxcD6biOk",
-                        Valid_Ratings[2])
+                       Valid_Ratings[2])
 
 Alladin = media.Movie("Alladin",
                       "Young Aladdin embarks on a magical adventure after"
@@ -56,4 +56,4 @@ Lego = media.Movie("lego",
 movies = [Titanic, Gullyboy, Alladin, Avengers, stm, Lego] 
 
 # Generate html
-movie_website.open_movies_page(movies) 
+movie_website.open_movies_page(movies)

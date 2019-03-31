@@ -12,7 +12,7 @@ main_page_head = '''
     <title>Movie Trailer Website</title>
     
     <!-- Bootstrap 3 -->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"> <!--# NOQA-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -103,7 +103,7 @@ main_page_content = '''
     <div class="modal" id="trailer">
       <div class="modal-dialog">
         <div class="modal-content">
-          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true"> <!--# NOQA-->
             <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24" alt="trailer"/>
           </a>
           <div class="scale-media" id="trailer-video-container">
@@ -131,7 +131,7 @@ main_page_content = '''
 
 # A single movie entry html template
 movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer}" data-toggle="modal" data-target="#trailer">
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer}" data-toggle="modal" data-target="#trailer"> <!--# NOQA-->
     <img src="{posterimg}" width="220" height="342" alt="Posterimg">
     <h2>{title}</h2>
     <h5>{storyline}</h5>
@@ -147,20 +147,19 @@ def create_movie_tiles_content(movies):
     for movie in movies:
         # Extract the youtube ID from the url
         youtube_id_match = re.search(
-            #r'(?<=v=)[^&#]+', movie.trailer_youtube_url)
+            # r'(?<=v=)[^&#]+', movie.trailer_youtube_url)
             r'(?<=v=)[^&#]+', movie.trailer)
         youtube_id_match = youtube_id_match or re.search(
             r'(?<=be/)[^&#]+', movie.trailer)
-        trailer = (youtube_id_match.group(0) if youtube_id_match
-                              else None)
+        trailer = (youtube_id_match.group(0) if youtube_id_match else None)
 
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
-            title = movie.title,
-            posterimg = movie.posterimg,
-            trailer = trailer,
-            storyline = movie.storyline,
-            rating = "Rating :"+movie.rating
+            title=movie.title,
+            posterimg=movie.posterimg,
+            trailer=trailer,
+            storyline=movie.storyline,
+            rating="Rating :"+movie.rating
         )
     return content
 
@@ -171,7 +170,7 @@ def open_movies_page(movies):
 
     # Replace the movie tiles placeholder generated content
     rendered_content = main_page_content.format(
-        movie_tiles = create_movie_tiles_content(movies))
+                         movie_tiles=create_movie_tiles_content(movies))
 
     # Output the file
     output_file.write(main_page_head + rendered_content)
